@@ -28,7 +28,6 @@ class Admin extends Controller {
                 // Set session variables or any other logic for successful login
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['user_name'] = $user['name'];
-                $_SESSION['login'] = true;
 
                 // Redirect to the dashboard or home page
                 header('Location: ' . BASEURL . '/Admin/dashboard'); // Adjust BASE_URL as needed

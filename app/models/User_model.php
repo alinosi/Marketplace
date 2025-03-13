@@ -1,6 +1,7 @@
 <?php 
     namespace app\models;
     use App\core\Database as Database;
+use PDOException;
 
     class User_model {
         private $table ='user';
@@ -54,9 +55,14 @@
         }
 
         public function deleteUser($id) {
-            $query = "DELETE FROM user WHERE user_id = :id";
-            $this->db->query($query);
-            $this->db->bind(':id', $id);
-            return $this->db->execute();
+            try {
+                $query = "DELETE FROM user WHERE user_id = :id";
+                $this->db->query($query);
+                $this->db->bind(':id', $id);
+                return $this->db->execute();
+            } catch (PDOException $e) {
+                return false;
+            }
+
         }
     }

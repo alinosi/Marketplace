@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-<div class="container text-center">
+<div class="container text-center" id="home">
     <img src="<?= BASEURL ;?>/img/logo.png" alt="Barber Image" class="img-fluid rounded mb-4" width="300px">
     <h1 class="display-4" style="color: #333;">Selamat datang di BARBER</h1>
         <p class="lead" style="color: #666;">

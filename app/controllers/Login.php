@@ -36,7 +36,7 @@ class Login extends Controller {
             } else {
                 // Set an error message
                 Flasher::setFlash('Login failed', 'Invalid email or password', 'danger');
-                header('Location: ' . BASEURL . '/Admin'); // Redirect back to login
+                header('Location: ' . BASEURL . '/Login'); // Redirect back to login
                 exit;
             }
         }

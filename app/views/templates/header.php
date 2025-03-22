@@ -10,9 +10,10 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="<?= BASEURL ;?>/img/icon.png">
     <style>
-    /* body {
-        margin-bottom: 100px; Menambahkan gap pada body
-    } */
+    
+    body {
+        background-color: wheat;
+    }
     .navbar {
         background-color: #e63946 !important; /* Warna yang sama dengan footer */
     }
@@ -115,10 +116,9 @@
         color: white;
         text-decoration: none;
     }
-</style>
     </style>
 </head>
-<body style="font-family: poppins; background-color: wheat;" >
+<body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?= BASEURL ;?>/img/logo.png"><img src="<?= BASEURL ;?>/img/navbarlogo.png" alt="navbarlogo.png" width="50px"></a> 

@@ -1,9 +1,5 @@
 <?php use app\core\Flasher as Flasher;?>
-<head>
     <style>
-        body {
-            background-color: #f8f9fa; /* Light background color */
-        }
         .profile-container {
             margin-top: 50px; /* Margin from the top */
         }
@@ -12,8 +8,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
         }
     </style>
-</head>
-<body>
     <div class="container profile-container">
         <div class="card">
             <div class="card-body">
@@ -39,4 +33,3 @@
             </div>
         </div>
     </div>
-</body>

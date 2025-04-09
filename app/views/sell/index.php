@@ -1,27 +1,19 @@
 <?php use app\core\Flasher as Flasher;?>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sell Items</title>
-    <!-- Link ke Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa; /* Warna latar belakang yang lembut */
-        }
         .container {
             margin-top: 50px; /* Margin atas */
         }
         .btn-primary {
             background-color: #e63946; /* Merah hati */
+            border: 2px solid #e63946; /* Border merah hati */
         }
         .btn-primary:hover {
             background-color: #ffffff; /* Warna leci (putih) */
             color: #e63946; /* Teks merah hati */
+            border: 2px solid #e63946; /* Border merah hati */
         }
     </style>
-</head>
-<body>
     <div class="container">
         <h2 class="text-center">My Products</h2>
 

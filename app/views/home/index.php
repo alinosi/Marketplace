@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jual Produk</title>
-    <style>
+<style>
         .btn-custom{
             background-color: #e63946; /* Merah hati */
             border-radius: 10px;
@@ -24,8 +18,6 @@
             border: 2px solid #e63946; /* Border merah hati */
         }
     </style>
-</head>
-<body>
 <div class="container text-center" id="home">
     <img src="<?= BASEURL ;?>/img/logo.png" alt="Barber Image" class="img-fluid rounded mb-4" width="300px">
     <h1 class="display-4" style="color: #333;">Selamat datang di BARBER</h1>
@@ -33,12 +25,9 @@
             <!-- Isi penjelasan mengenai barber di sini -->
             Ini adalah tempat di mana Anda dapat menemukan dan menjual barang-barang bekas dengan mudah, cepat, dan efesien.
         </p>
-        
         <!-- Tombol -->
         <div class="mt-4">
             <a href="<?= BASEURL ?>/Market" class="btn btn-custom mr-2">Beli Barang</a>
             <a href="<?= BASEURL; ?>/Sell" class="btn btn-custom">Jual Barang</a>
         </div>
 </div>
-</body>
-</html>

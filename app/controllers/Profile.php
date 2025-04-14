@@ -22,7 +22,8 @@ class Profile extends Controller {
         
 
         // Fetch user data from the database
-        $data['user'] = $userModel->getUserById($userId); // Method to fetch user data by ID
+        $data['user'] = $userModel->getUser
+        ById($userId); // Method to fetch user data by ID
         $data['judul'] = 'User  Profile';
         
         // Load the profile view

@@ -7,10 +7,7 @@ use app\models\UserModel; // Assuming you have a UserModel for database interact
 
 class Profile extends Controller {
     public function index() {
-        // Load the UserModel
         $userModel = $this->model('User_model');
-
-        // Get the user ID from the session (assuming you have stored it during login)
 
         if( !isset($_SESSION['user_id'])) {
             header('Location: ' . BASEURL . '/login');
@@ -19,11 +16,7 @@ class Profile extends Controller {
             $userId = $_SESSION['user_id'];
         }
 
-        
-
-        // Fetch user data from the database
-        $data['user'] = $userModel->getUser
-        ById($userId); // Method to fetch user data by ID
+        $data['user'] = $userModel->getUserById($userId); // Method to fetch user data by ID
         $data['judul'] = 'User  Profile';
         
         // Load the profile view

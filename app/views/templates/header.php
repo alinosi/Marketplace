@@ -11,8 +11,13 @@
     <style>
     
     body {
-        background-color: wheat;
+        background-color: white;
     }
+
+    *:not(input, textarea) {
+    -webkit-user-select: none;
+}
+
     .navbar {
         background-color: #e63946 !important; /* Warna yang sama dengan footer */
     }
@@ -120,7 +125,6 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="<?= BASEURL ;?>/img/logo.png"><img src="<?= BASEURL ;?>/img/navbarlogo.png" alt="navbarlogo.png" width="50px"></a> 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -148,6 +152,9 @@
             <li><a class="dropdown-item" href="<?= BASEURL ?>/Login">Login</a></li>
             <?php endif; ?>
           </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= BASEURL ?>/about">About</a>
         </li>
       </ul>
       <!-- <form class="d-flex" role="search">

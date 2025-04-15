@@ -19,7 +19,7 @@
 }
 
     .navbar {
-        background-color: #e63946 !important; /* Warna yang sama dengan footer */
+        background-color: gold !important; /* Warna yang sama dengan footer */
     }
 
     .navbar .nav-link,
@@ -43,7 +43,7 @@
     }
 
     footer {
-        background-color: #e63946; /* Mengubah warna footer menjadi merah hati */
+        background-color: gold; /* Mengubah warna footer menjadi merah hati */
         color: #f4f4f4;
         padding: 50px;
         text-align: left;

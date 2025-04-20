@@ -27,7 +27,7 @@
             JOIN 
                 categories c ON p.categories_id = c.categories_id
             JOIN 
-                user u ON p.user_id = u.user_id');
+                users u ON p.user_id = u.user_id');
             return $this->db->resultSet();
 
         }

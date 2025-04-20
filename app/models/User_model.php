@@ -4,7 +4,7 @@
 use PDOException;
 
     class User_model {
-        private $table ='user';
+        private $table ='users';
         private $db;
 
         // koneksi database
@@ -13,7 +13,7 @@ use PDOException;
         }
 
         public function getuser(){
-            $this->db->query("SELECT * FROM user");
+            $this->db->query("SELECT * FROM ". $this->table);
             return $this->db->resultSet();
         }
 
@@ -24,7 +24,7 @@ use PDOException;
         }
 
         public function registerUser ($name, $email, $password, $address, $phone) {
-            $this->db->query("INSERT INTO user VALUES (NULL, :name, :address, :phone, :email, :password)");
+            $this->db->query("INSERT INTO ". $this->table . " VALUES (NULL, :name, :address, :phone, :email, :password)");
             $this->db->bind(':name', $name);
             $this->db->bind(':email', $email);
             $this->db->bind(':password', $password);
@@ -40,13 +40,13 @@ use PDOException;
         }
 
         public function getUserById($id) {
-            $this->db->query("SELECT * FROM user WHERE user_id = :id");
+            $this->db->query("SELECT * FROM ". $this->table . " WHERE user_id = :id");
             $this->db->bind(':id', $id);
             return $this->db->single(); // Fetch single user data
         }
 
         public function updateUser ($id, $name, $phone, $address) {
-            $this->db->query("UPDATE user SET name = :name, phone_number = :phone, address = :address WHERE user_id = :id");
+            $this->db->query("UPDATE " . $this->table . " SET name = :name, phone_number = :phone, address = :address WHERE user_id = :id");
             $this->db->bind(':name', $name);
             $this->db->bind(':phone', $phone);
             $this->db->bind(':address', $address);
@@ -56,7 +56,7 @@ use PDOException;
 
         public function deleteUser($id) {
             try {
-                $query = "DELETE FROM user WHERE user_id = :id";
+                $query = "DELETE FROM " . $this->table . " WHERE user_id = :id";
                 $this->db->query($query);
                 $this->db->bind(':id', $id);
                 return $this->db->execute();

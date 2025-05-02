@@ -21,7 +21,7 @@
                 c.categories AS Category,
                 u.address AS Owner_Address,
                 u.user_id AS Owner_Product,
-                p.descriptions AS Description
+                p.description AS Description
             FROM 
                 products p
             JOIN 

@@ -35,7 +35,7 @@
                     <p>Price: <?= $product['product_price']?></p>
                     <p>Status: <?= $product['status']?></p>
                     <p>Category: <?= $product['category_name']?></p>
-                    <p>Description: <?= $product['descriptions']?></p>
+                    <p>Description: <?= $product['description']?></p>
                 </div>
                 <div>
                     <button class="btn btn-danger btn-sm"><a href="<?= BASEURL; ?>/Sell/delete/<?= $product['product_id'] ?>">Delete</a></button>

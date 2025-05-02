@@ -21,7 +21,7 @@ class Product_model {
             p.product_name,
             p.image,
             p.product_price,
-            p.descriptions
+            p.description
         FROM 
             PRODUCTS p
         JOIN 

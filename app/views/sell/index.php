@@ -83,7 +83,7 @@
                         </div>
                         <div class="form-group">
                             <label for="productImage">Item Image</label>
-                            <input type="file" class="form-control-file" id ="productImage" name="product_image" accept="image/*" value="NULL">
+                            <input type="file" class="form-control-file" id ="productImage" name="image" accept="image/*" value="NULL">
                         </div>
                     </div>
                     <div class="modal-footer">

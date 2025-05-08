@@ -38,7 +38,7 @@
     <?php foreach ($data['items'] as $index => $item) : ?>
         <div class="col-md-4 mb-4">
             <div class="card">
-                <!-- <img src="<?= $item['image'] ?>" class="card-img-top" alt="<?= $item['name'] ?>"> -->
+                <img src="<?= $item['image'] ?>" class="card-img-top" alt="<?= $item['name'] ?>">
                 <div class="card-body">
                     <h5 class="card-title"><?= $item['Product_Name'] ?></h5>
                     <p class="card-text">Price: <?= $item['Price'] ?></p>

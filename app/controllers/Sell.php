@@ -115,4 +115,40 @@ class Sell extends Controller {
         header('Location: ' . BASEURL . '/sell/index'); // Redirect to product list
         exit;
     }
+
+    function upload(){
+        $namaFiles = $_FILES['Gambar']['name'];
+        $ukuranFiles = $_FILES['Gambar']['size'];
+        $error = $_FILES['Gambar']['error'];
+        $tmpName = $_FILES['Gambar']['tmp_name'];
+
+        // cek apakah tidak ada gambar yang di upload
+        if($error ===4 ){
+            echo 
+            "<script>
+            alert('pilih gambar terlebih dahulu');
+            </script>";
+            return false;
+        }
+
+        $ekstensiGambarValid = ['jpg','jpeg','png','webp'];
+        $ekstensiGambar = explode('.',$namaFiles);
+        $ekstensiGambar = strtolower(end($ekstensiGambar));
+        if(!in_array($ekstensiGambar,$ekstensiGambarValid)){
+            return 9;
+            }
+            
+        // cek ukuran gambar
+        if($ukuranFiles > 3000000){
+            return 8;
+            }
+        // lolos pengecekan, gambar siap di upload
+        // generate nama gambar baru
+        $namaGambarBaru = uniqid().".$ekstensiGambar";
+        // $namaGambarBaru .= '.';
+        // $namaGambarBaru .= $ekstensiGambar;
+        move_uploaded_file($tmpName,'img/'.$namaGambarBaru);
+        return $namaGambarBaru;
+
+    }
 }

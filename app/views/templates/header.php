@@ -139,6 +139,9 @@
         <li class="nav-item">
           <a class="nav-link" href="<?= BASEURL ?>/Sell">Sell</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= BASEURL ?>/Order">Order</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Profile
@@ -155,6 +158,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?= BASEURL ?>/about">About</a>
+        </li>
+        <li class="nav-item" style="margin-left: 750px;">
+          <a class="nav-link" href="<?= BASEURL ?>/Cart">Cart</a>
         </li>
       </ul>
       <!-- <form class="d-flex" role="search">

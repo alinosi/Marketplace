@@ -9,7 +9,7 @@ class Sell extends Controller {
         // Load the ProductModel
         $productModel = $this->model('Product_model');
 
-        if( !isset($_SESSION['user_id'])) {
+        if( !isset($_SESSION['user_id']) || $_SESSION['user_id'] == 0) {
             header('Location: ' . BASEURL . '/login');
         } else {
             // Get the user ID from the session
@@ -38,15 +38,21 @@ class Sell extends Controller {
             $productCategory = $_POST['product_category'];
             $productPrice = $_POST['product_price'];
             $productDescription = $_POST['product_description'];
-            $productImage = NULL;
             $status = 'Available';
+
+            $productImage = $this->upload();
+            if($productImage==9){
+                return 9;
+            }
+            elseif($productImage==8){
+                return 8;
+            }
+            elseif (!$productImage){
+                return false;
+            }
 
             // Load the ProductModel
             $productModel = $this->model('Product_model');
-
-            // Handle file upload (you may want to add validation here)
-            $imagePath = 'uploads/' . basename($productImage['name']);
-            move_uploaded_file($productImage['tmp_name'], $imagePath);
 
             // Add the product to the database
             if ($productModel->addProduct($productId, $userId, $productCategory, $status, $productName, $productImage, $productPrice, $productDescription, NULL)) {
@@ -117,10 +123,10 @@ class Sell extends Controller {
     }
 
     function upload(){
-        $namaFiles = $_FILES['Gambar']['name'];
-        $ukuranFiles = $_FILES['Gambar']['size'];
-        $error = $_FILES['Gambar']['error'];
-        $tmpName = $_FILES['Gambar']['tmp_name'];
+        $namaFiles = $_FILES['image']['name'];
+        $ukuranFiles = $_FILES['image']['size'];
+        $error = $_FILES['image']['error'];
+        $tmpName = $_FILES['image']['tmp_name'];
 
         // cek apakah tidak ada gambar yang di upload
         if($error ===4 ){

@@ -11,23 +11,26 @@
         }
 
         // 
-        public function getItems(){
+        public function getItems($userId){
             $this->db->query(
-            'SELECT
+            "SELECT
                 p.product_id AS Product_id,
                 p.product_name AS Product_Name,
                 p.product_price AS Price,
                 p.status AS Status,
                 c.categories AS Category,
                 u.address AS Owner_Address,
-                u.user_id AS Owner_Product,
-                p.description AS Description
+                u.name AS Owner_Product,
+                p.description AS Description,
+                p.image AS Image
             FROM 
                 products p
             JOIN 
                 categories c ON p.categories_id = c.categories_id
             JOIN 
-                users u ON p.user_id = u.user_id');
+                users u ON p.user_id = u.user_id
+            WHERE p.user_id != $userId"
+            );
             return $this->db->resultSet();
 
         }

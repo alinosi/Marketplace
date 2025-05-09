@@ -6,8 +6,11 @@
 
     class Market extends Controller{
         public function index() {
+            if (!isset($_SESSION['user_id'])) {
+                $_SESSION['user_id'] = 0;
+            }
             $data['judul'] = 'Market';
-            $data['items'] = $this->model('Item_model')->getItems();
+            $data['items'] = $this->model('Item_model')->getItems($_SESSION['user_id']);
             $this->view('templates/header', $data);
             $this->view('market/index', $data);
             $this->view('templates/footer');
@@ -29,13 +32,14 @@
         // }
 
         public function productOrder($productId,$productPrice){
-            if (!isset($_SESSION['user_id'])) {
+            if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == 0) {
+                Flasher::setflash('Login', 'Silahkan login terlebih dahulu', 'danger');
                 header('location:'.BASEURL.'/login');
                 exit;
             }
             $orderModel = $this->model('Item_model');
             if ($orderModel->selectItemById($productId,$productPrice)) {
-                Flasher::setflash('Pemesanan', 'Pemesanan berhasil', 'success');
+                Flasher::setflash('Pemesanan', 'Pemesanan berhasil, silahkanm lakukan pembayaran', 'success');
             }
             else {
                 Flasher::setflash('Item', 'Item tidak ditemukan', 'danger');

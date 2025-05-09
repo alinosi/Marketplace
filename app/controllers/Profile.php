@@ -9,7 +9,7 @@ class Profile extends Controller {
     public function index() {
         $userModel = $this->model('User_model');
 
-        if( !isset($_SESSION['user_id'])) {
+        if( !isset($_SESSION['user_id']) || $_SESSION['user_id'] == 0) {
             header('Location: ' . BASEURL . '/login');
         }
         else {

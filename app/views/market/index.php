@@ -36,9 +36,10 @@
         <div class="row">
             <div class="row">
     <?php foreach ($data['items'] as $index => $item) : ?>
+        <!-- <?php var_dump($item) ?> -->
         <div class="col-md-4 mb-4">
             <div class="card">
-                <img src="<?= $item['image'] ?>" class="card-img-top" alt="<?= $item['name'] ?>">
+                <img src="<?= BASEURL . "/img/" . $item['Image'] ?>" class="card-img-top" alt="<?= $item['Product_Name'] ?>">
                 <div class="card-body">
                     <h5 class="card-title"><?= $item['Product_Name'] ?></h5>
                     <p class="card-text">Price: <?= $item['Price'] ?></p>
@@ -63,6 +64,7 @@
                         <p><strong>Name:</strong> <?= $item['Product_Name'] ?></p>
                         <p><strong>Price:</strong> <?= $item['Price'] ?></p>
                         <p><strong>Store Address:</strong> <?= $item['Owner_Address'] ?></p>
+                        <p><strong>Seller :</strong> <?= $item['Owner_Product'] ?></p>
                         <p><strong>Status:</strong> <?= $item['Status'] ?></p>
                         <p><strong>Descriptions:</strong> <?= $item['Description'] ?></p>
                     </div>

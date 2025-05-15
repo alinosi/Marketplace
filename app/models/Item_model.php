@@ -29,8 +29,9 @@
                 categories c ON p.categories_id = c.categories_id
             JOIN 
                 users u ON p.user_id = u.user_id
-            WHERE p.user_id != $userId"
+            WHERE p.user_id != :user_id"
             );
+            $this->db->bind('user_id', $userId);
             return $this->db->resultSet();
 
         }
@@ -41,8 +42,9 @@
             return $this->db->single();
            }
 
-        public function getBestItems(){
-            $this->db->query('SELECT * FROM products LIMIT 3');
+        public function getBestItems($id){
+            $this->db->query('SELECT * FROM products where user_id != :id limit 3');
+            $this->db->bind('id', $id);
             return $this->db->resultSet();
         }
 

@@ -21,6 +21,22 @@
             $this->view('cart/index', $data);
             $this->view('templates/footer');
         }
+
+        public function delete($id){
+            // Load the ProductModel
+            $orderModel = $this->model('Orders_model');
+            
+            // Delete the order from the database
+            if ($orderModel->deleteOrder($id)) {
+                Flasher::setFlash('Order berhasil dihapus', '', 'success');
+            } else {
+                Flasher::setFlash('Failed to delete Order', '', 'danger');
+            }
+        
+            header('Location: ' . BASEURL . '/cart'); // Redirect to product list
+            exit;
+            
+        }
     }  
 
 ?>

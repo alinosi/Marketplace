@@ -256,7 +256,7 @@
                     <div class="product-info">
                         <h3 class="product-title"><?= $item['product_name'] ?></h3>
                         <p class="product-price"><?= "Rp. " . number_format($item['product_price'], 0, ',', '.') ?></p>
-                        <a href="cart"><button class="add-to-cart">Tambah ke Keranjang</button></a>
+                        <a href="<?= BASEURL; ?>/Market/productOrder/<?= $item['product_id'] . '/' . $item['product_price']; ?>"><button class="add-to-cart">Tambah ke Keranjang</button></a>
                     </div>
                 </div>
             <?php endforeach; ?>

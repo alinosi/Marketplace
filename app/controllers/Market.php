@@ -39,12 +39,14 @@
             }
             $orderModel = $this->model('Item_model');
             if ($orderModel->selectItemById($productId,$productPrice)) {
-                Flasher::setflash('Pemesanan', 'Pemesanan berhasil, silahkanm lakukan pembayaran', 'success');
+                Flasher::setflash('Pemesanan', 'berhasil, silahkanm lakukan pembayaran', 'success');
             }
             else {
-                Flasher::setflash('Item', 'Item tidak ditemukan', 'danger');
+                Flasher::setflash('Pemesanan', 'gagal dilakukan', 'danger');
+                header('Location: ' . BASEURL . '/Market'); // Redirect back to profile
+                exit;
             }
-            header('Location: ' . BASEURL . '/Market'); // Redirect back to profile
+            header('Location: ' . BASEURL . '/Cart'); // Redirect back to profile
             exit;
             
         }

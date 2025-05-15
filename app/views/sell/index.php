@@ -22,7 +22,7 @@
             Add New Product
         </button>
         <div class="col-6">
-                    <?php Flasher::flash()?>
+            <?php Flasher::flash()?>
         </div>
 
         <!-- Product List -->

@@ -1,8 +1,9 @@
 <?php 
-namespace app\controllers;
 
-use app\core\Flasher;
-use app\core\Controller;
+    namespace app\controllers;
+    
+    use app\core\Flasher;
+    use app\core\Controller;
 
 class Admin extends Controller {
     public function index() {

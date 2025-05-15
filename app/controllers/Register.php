@@ -24,7 +24,7 @@ class Register extends Controller {
 
             // Validate password match
             if ($password !== $confirmPassword) {
-                Flasher::setFlash('Registration failed', 'Passwords do not match', 'danger');
+                Flasher::setFlash('Registrasi gagal', 'Passwords do not match', 'danger');
                 header('Location: ' . BASEURL . '/register'); // Redirect back to register
                 exit;
             }

@@ -237,18 +237,18 @@
     <!-- 3. 2 Button Utama -->
     <div class="main-buttons">
         <div class="button-container">
-            <a href="<?= BASEURL; ?>/Market"><button class="main-button">Belanja</button></a>
+            <a href="<?= BASEURL; ?>/Market"><button class="main-button">Market</button></a>
             <p class="button-text">Temukan ribuan produk dengan harga terbaik</p>
         </div>
         <div class="button-container">
-            <a href="<?= BASEURL; ?>/Sell"><button class="main-button">Jual</button></a>   
+            <a href="<?= BASEURL; ?>/Sell"><button class="main-button">Sell</button></a>   
             <p class="button-text">Ubah sampah menjadi uang</p>
         </div>
     </div>
     
     <!-- 4. 3 Cart Produk Unggulan -->
     <section class="featured-products">
-        <h2 class="section-title">Produk Unggulan</h2>
+        <h2 class="section-title">Featured Product</h2>
         <div class="product-container">
             <?php foreach($data['items'] as $item) : ?>
                 <div class="product-card">
@@ -256,7 +256,7 @@
                     <div class="product-info">
                         <h3 class="product-title"><?= $item['product_name'] ?></h3>
                         <p class="product-price"><?= "Rp. " . number_format($item['product_price'], 0, ',', '.') ?></p>
-                        <a href="<?= BASEURL; ?>/Market/productOrder/<?= $item['product_id'] . '/' . $item['product_price']; ?>"><button class="add-to-cart">Tambah ke Keranjang</button></a>
+                        <a href="<?= BASEURL; ?>/Market/productOrder/<?= $item['product_id'] . '/' . $item['product_price']; ?>"><button class="add-to-cart">Add to cart</button></a>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -265,7 +265,7 @@
     
     <!-- 5. Exclusive Content -->
     <section class="exclusive-content">
-        <h2 class="exclusive-title">Dapatkan Akses Eksklusif</h2>
+        <h2 class="exclusive-title">Get an Exclusive Access</h2>
         <p class="exclusive-description">Bergabunglah dengan program keanggotaan kami untuk mendapatkan akses ke penawaran eksklusif, diskon spesial, dan pengiriman gratis setiap bulan.</p>
         
         <div class="subscription-options">
@@ -277,7 +277,7 @@
                     <li>Akses prioritas ke flash sale</li>
                     <li>Pengiriman gratis (min. Rp 200rb)</li>
                 </ul>
-                <button class="subscribe-button">Berlangganan</button>
+                <button class="subscribe-button">Subscribe</button>
             </div>
             
             <div class="subscription-plan">
@@ -290,7 +290,7 @@
                     <li>Cashback 5% dalam bentuk poin</li>
                     <li>Akses ke produk pre-launch</li>
                 </ul>
-                <button class="subscribe-button">Berlangganan</button>
+                <button class="subscribe-button">Subscribe</button>
             </div>
         </div>
     </section>

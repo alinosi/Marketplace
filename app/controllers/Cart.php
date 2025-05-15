@@ -37,6 +37,14 @@
             exit;
             
         }
+
+        public function payment($itemId) {
+            $data['judul'] = 'Home';
+            $data['items'] = $this->model('Item_model')->getItemById($itemId);
+            $this->view('templates/header', $data);
+            $this->view('cart/index', $data);
+            $this->view('templates/footer');
+        }
     }  
 
 ?>

@@ -183,7 +183,7 @@
 <body>
     <!-- Main Content -->
     <div class="container">
-        <h1 class="page-title">Keranjang Belanja</h1>
+        <h1 class="page-title">Shopping Cart</h1>
         <div class="col-6">
             <?php Flasher::flash()?>
         </div>
@@ -202,9 +202,7 @@
                 <div class="item-price"><?= "Rp. " . number_format($item['product_price'], 0, ',', '.') ?></div>
                 
                 <div class="item-quantity">
-                    <button class="quantity-btn" data-action="decrease">-</button>
-                    <input type="text" class="quantity-input" value="1">
-                    <button class="quantity-btn" data-action="increase">+</button>
+                    Quantity<input type="text" class="quantity-input" value="1" readonly>
                 </div>
                 
                 <div class="divider"></div>
@@ -217,8 +215,9 @@
                         <i class="far fa-trash-alt"></i> <a href="<?= BASEURL; ?>/Cart/delete/<?= $item['id'] ?>">Hapus</a>
                     </button>
                 </div>
-                
-                <button class="checkout-btn">Bayar Sekarang</button>
+                <form action="/Cart/payment" method="post">
+                    <a href="<?= BASEURL; ?>/Cart/payment/<?= $item['id'] ?>"><button class="checkout-btn">Payment</button></a>
+                </form>
             </div>
             <?php endforeach; ?>
         </div>

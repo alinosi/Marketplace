@@ -264,8 +264,10 @@
             <h5 class="filter-title">Filter</h5>
             <select class="filter-select" id="categoryFilter">
                 <option value="" disabled selected>Select Category</option>
-                <option value="elektronik">Electronics</option>
-                <option value="olahraga">Sports</option>
+                <option value="All" selected>All</option>
+                <option value="Electronics">Electronic</option>
+                <option value="Sports">Sports</option>
+                <option value="Clothes">Clothes</option>
             </select>
         </div>
 
@@ -286,7 +288,7 @@
                         </p>
                         <b><?= $item['Category'] ?></b>
                         <button class="btn-details" data-toggle="modal" data-target="#productDetails<?= $index ?>">
-                            <i class="fas fa-info-circle mr-1"></i> Detail Produk
+                            <i class="fas fa-info-circle mr-1"></i> Product Details
                         </button>
                     </div>
                 </div>
@@ -300,7 +302,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="productDetailsLabel<?= $index ?>">Detail Produk</h5>
+                        <h5 class="modal-title" id="productDetailsLabel<?= $index ?>">Product Details</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -355,4 +357,35 @@
                 button.addEventListener("click", showOrderNotification);
             });
         };
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+          const filterSelect = document.getElementById('categoryFilter');
+        
+          filterSelect.addEventListener('change', function() {
+            const selectedCategory = this.value; // misal "All", "elektronik", dsb.
+            const productCols = document.querySelectorAll('.product-grid .col-md-4');
+        
+            // Jika pilih "All", tampilkan semua dan hentikan lebih lanjut
+            if (selectedCategory === 'All') {
+              productCols.forEach(col => col.style.display = '');
+              return;
+            }
+        
+            // Selain itu, filter per-item
+            productCols.forEach(col => {
+              const categoryText = col
+                .querySelector('b')
+                .textContent
+                .trim()
+                .toLowerCase();
+            
+              if (categoryText === selectedCategory.toLowerCase()) {
+                col.style.display = '';
+              } else {
+                col.style.display = 'none';
+              }
+            });
+          });
+        });
     </script>

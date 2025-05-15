@@ -229,7 +229,6 @@
             }
         }
     </style>
-</head>
 <body>    
     <!-- 2. Gambar Banner -->
     <div class="banner-container">
@@ -239,12 +238,12 @@
     <!-- 3. 2 Button Utama -->
     <div class="main-buttons">
         <div class="button-container">
-            <a href="<?= BASEURL; ?>/Market"><button class="main-button">Belanja Sekarang</button></a>
+            <a href="<?= BASEURL; ?>/Market"><button class="main-button">Belanja</button></a>
             <p class="button-text">Temukan ribuan produk dengan harga terbaik</p>
         </div>
         <div class="button-container">
-            <a href="<?= BASEURL; ?>/Sell"><button class="main-button">Dapatkan Uang</button></a>   
-            <p class="button-text">Dapatkan diskon hingga 70% untuk produk pilihan</p>
+            <a href="<?= BASEURL; ?>/Sell"><button class="main-button">Jual Barang</button></a>   
+            <p class="button-text">Ubah sampah menjadi uang</p>
         </div>
     </div>
     
@@ -252,32 +251,16 @@
     <section class="featured-products">
         <h2 class="section-title">Produk Unggulan</h2>
         <div class="product-container">
-            <div class="product-card">
-                <img src="<?= BASEURL; ?>/img/681d5c2aa2f2d.png" alt="Produk 1" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Smartwatch Premium</h3>
-                    <p class="product-price">Rp 1.599.000</p>
-                    <button class="add-to-cart">Tambah ke Keranjang</button>
+            <?php foreach($data['items'] as $item) : ?>
+                <div class="product-card">
+                    <img src="<?= BASEURL . "/img/" . $item['image'] ?>" alt="<?= $item['product_name'] ?>" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title"><?= $item['product_name'] ?></h3>
+                        <p class="product-price"><?= "Rp. " . number_format($item['product_price'], 0, ',', '.') ?></p>
+                        <a href="cart"><button class="add-to-cart">Tambah ke Keranjang</button></a>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="product-card">
-                <img src="<?= BASEURL; ?>/img/681d5c2aa2f2d.png" alt="Produk 2" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Headphone Wireless</h3>
-                    <p class="product-price">Rp 899.000</p>
-                    <button class="add-to-cart">Tambah ke Keranjang</button>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <img src="<?= BASEURL; ?>/img/681d5c2aa2f2d.png" alt="Produk 3" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Kamera Mirrorless</h3>
-                    <p class="product-price">Rp 8.799.000</p>
-                    <button class="add-to-cart">Tambah ke Keranjang</button>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </section>
     

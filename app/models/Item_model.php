@@ -41,6 +41,11 @@
             return $this->db->single();
            }
 
+        public function getBestItems(){
+            $this->db->query('SELECT * FROM products LIMIT 3');
+            return $this->db->resultSet();
+        }
+
         public function selectItemById($id,$price){
             $userId = $_SESSION['user_id'];
             $orderId = random_int(1, 10000);

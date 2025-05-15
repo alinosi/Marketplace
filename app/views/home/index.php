@@ -3,7 +3,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
@@ -242,7 +241,7 @@
             <p class="button-text">Temukan ribuan produk dengan harga terbaik</p>
         </div>
         <div class="button-container">
-            <a href="<?= BASEURL; ?>/Sell"><button class="main-button">Jual Barang</button></a>   
+            <a href="<?= BASEURL; ?>/Sell"><button class="main-button">Jual</button></a>   
             <p class="button-text">Ubah sampah menjadi uang</p>
         </div>
     </div>
@@ -295,6 +294,13 @@
             </div>
         </div>
     </section>
+    <script>
+      document
+        .querySelectorAll('.subscribe-button')
+        .forEach(btn =>
+          btn.addEventListener('click', () => alert('berhasil'))
+        );
+    </script>
     
     <!-- 6. Footer -->
 <!-- letakkan ini sebelum penutup </body> -->

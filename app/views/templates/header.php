@@ -6,6 +6,7 @@
     <title><?= $data['judul'] ?></title>
     <link href=" <?= BASEURL ;?> /css/button-mandiri.css" rel="stylesheet">
     <link href=" <?= BASEURL ;?> /css/bootstrap.css" rel="stylesheet">
+    <link href=" <?= BASEURL ;?> /css/main.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="<?= BASEURL ;?>/img/icon.png">
     <style>
@@ -19,18 +20,20 @@
 }
 
     .navbar {
-        background-color: #e63946 !important; /* Warna yang sama dengan footer */
+        background-color: black !important; /* Warna yang sama dengan footer */
     }
 
     .navbar .nav-link,
     .navbar .navbar-brand,
     .navbar {
         color: #f4f4f4 !important; /* Warna teks agar kontras */
+        transition: none;
     }
 
-    .navbar .nav-link:hover,
-    .navbar:hover {
+    .nav-link:hover {
         color: black !important;
+        background-color: white;
+        border-radius: 20px;
     }
 
     .navbar-toggler {
@@ -43,7 +46,7 @@
     }
 
     footer {
-        background-color: #e63946; /* Mengubah warna footer menjadi merah hati */
+        background-color: black; /* Mengubah warna footer menjadi merah hati */
         color: #f4f4f4;
         padding: 50px;
         text-align: left;

@@ -1,33 +1,317 @@
-<style>
-        .btn-custom{
-            background-color: #e63946; /* Merah hati */
-            border-radius: 10px;
-            font-size: 16px;
-            /* border: 1px solid transparent; */
-            width: 200px;
-            display: inline-block;
-            text-decoration: none;
-            padding: 3px;
-            color: white;
-            border: 2px solid #e63946; /* Border merah hati */
-            transition: background-color 0.3s, color 0.3s; /* Transisi untuk hover */
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .btn-custom:hover {
-            background-color: #ffffff; /* Warna leci (putih) */
-            color: #e63946; /* Teks merah hati */
-            border: 2px solid #e63946; /* Border merah hati */
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        /* 2. Gambar banner dengan margin dan sudut bulat */
+        .banner-container {
+            margin: 2rem 5%;
+        }
+        
+        .banner-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 16px; /* Sudut sedikit melingkar */
+        }
+        
+        /* 3. 2 Button utama dengan text */
+        .main-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .main-button {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 12px; /* Sudut sedikit melingkar */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 180px;
+        }
+        
+        .main-button:hover {
+            background-color: #e63900;
+        }
+        
+        .button-text {
+            margin-top: 0.8rem;
+            max-width: 200px;
+            color: #333;
+        }
+        
+        /* 4. 3 cart produk unggulan */
+        .featured-products {
+            padding: 2rem 5%;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        
+        .product-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 16px; /* Sudut tidak siku-siku */
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .product-price {
+            color: #ff4500;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .add-to-cart {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 0.7rem 1rem;
+            border-radius: 8px; /* Sudut sedikit melingkar */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #333;
+        }
+        
+        /* 5. Exclusive content */
+        .exclusive-content {
+            background-color: #222;
+            color: white;
+            padding: 3rem 5%;
+            margin: 3rem 5%;
+            border-radius: 20px; /* Sudut sedikit melingkar */
+            text-align: center;
+        }
+        
+        .exclusive-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .exclusive-description {
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .subscription-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .subscription-plan {
+            background-color: #333;
+            padding: 1.5rem;
+            border-radius: 12px; /* Sudut sedikit melingkar */
+            width: 250px;
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .plan-price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #ff4500;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .plan-features li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .plan-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff4500;
+        }
+        
+        .subscribe-button {
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px; /* Sudut sedikit melingkar */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .subscribe-button:hover {
+            background-color: #e63900;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .main-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .banner-image {
+                height: 250px;
+            }
+            
+            .exclusive-content {
+                padding: 2rem 1rem;
+            }
         }
     </style>
-<div class="container text-center" id="home">
-    <img src="<?= BASEURL ;?>/img/logo.png" alt="Barber Image" class="img-fluid rounded mb-4" width="300px">
-    <h1 class="display-4" style="color: #333;">Selamat datang di BARBER</h1>
-        <p class="lead" style="color: #666;">
-            <!-- Isi penjelasan mengenai barber di sini -->
-            Ini adalah tempat di mana Anda dapat menemukan dan menjual barang-barang bekas dengan mudah, cepat, dan efesien.
-        </p>
-        <!-- Tombol -->
-        <div class="mt-4">
-            <a href="<?= BASEURL ?>/Market" class="btn btn-custom mr-2">Beli Barang</a>
-            <a href="<?= BASEURL; ?>/Sell" class="btn btn-custom">Jual Barang</a>
+</head>
+<body>    
+    <!-- 2. Gambar Banner -->
+    <div class="banner-container">
+        <img src="<?= BASEURL; ?>/img/BARB.png" alt="Banner Promo" class="banner-image">
+    </div>
+    
+    <!-- 3. 2 Button Utama -->
+    <div class="main-buttons">
+        <div class="button-container">
+            <a href="<?= BASEURL; ?>/Market"><button class="main-button">Belanja Sekarang</button></a>
+            <p class="button-text">Temukan ribuan produk dengan harga terbaik</p>
         </div>
-</div>
+        <div class="button-container">
+            <a href="<?= BASEURL; ?>/Sell"><button class="main-button">Dapatkan Uang</button></a>   
+            <p class="button-text">Dapatkan diskon hingga 70% untuk produk pilihan</p>
+        </div>
+    </div>
+    
+    <!-- 4. 3 Cart Produk Unggulan -->
+    <section class="featured-products">
+        <h2 class="section-title">Produk Unggulan</h2>
+        <div class="product-container">
+            <div class="product-card">
+                <img src="<?= BASEURL; ?>/img/681d5c2aa2f2d.png" alt="Produk 1" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Smartwatch Premium</h3>
+                    <p class="product-price">Rp 1.599.000</p>
+                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="<?= BASEURL; ?>/img/681d5c2aa2f2d.png" alt="Produk 2" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Headphone Wireless</h3>
+                    <p class="product-price">Rp 899.000</p>
+                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="<?= BASEURL; ?>/img/681d5c2aa2f2d.png" alt="Produk 3" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Kamera Mirrorless</h3>
+                    <p class="product-price">Rp 8.799.000</p>
+                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 5. Exclusive Content -->
+    <section class="exclusive-content">
+        <h2 class="exclusive-title">Dapatkan Akses Eksklusif</h2>
+        <p class="exclusive-description">Bergabunglah dengan program keanggotaan kami untuk mendapatkan akses ke penawaran eksklusif, diskon spesial, dan pengiriman gratis setiap bulan.</p>
+        
+        <div class="subscription-options">
+            <div class="subscription-plan">
+                <h3 class="plan-name">Basic</h3>
+                <p class="plan-price">Rp 49.000/bln</p>
+                <ul class="plan-features">
+                    <li>Diskon 5% untuk semua produk</li>
+                    <li>Akses prioritas ke flash sale</li>
+                    <li>Pengiriman gratis (min. Rp 200rb)</li>
+                </ul>
+                <button class="subscribe-button">Berlangganan</button>
+            </div>
+            
+            <div class="subscription-plan">
+                <h3 class="plan-name">Premium</h3>
+                <p class="plan-price">Rp 129.000/bln</p>
+                <ul class="plan-features">
+                    <li>Diskon 15% untuk semua produk</li>
+                    <li>Akses prioritas ke flash sale</li>
+                    <li>Pengiriman gratis tanpa minimum</li>
+                    <li>Cashback 5% dalam bentuk poin</li>
+                    <li>Akses ke produk pre-launch</li>
+                </ul>
+                <button class="subscribe-button">Berlangganan</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 6. Footer -->
+<!-- letakkan ini sebelum penutup </body> -->

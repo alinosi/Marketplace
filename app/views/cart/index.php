@@ -174,6 +174,40 @@
             margin: 15px 0;
         }
 
+  .payment-options {
+            margin-top: 30px;
+        }
+        
+        .payment-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .payment-method {
+            border: 2px solid var(--grey-color);
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .payment-method.active {
+            border-color: var(--primary-color);
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
         @media (max-width: 768px) {
             .cart-container {
                 grid-template-columns: 1fr;
@@ -204,6 +238,13 @@
                 <div class="item-quantity">
                     Quantity<input type="text" class="quantity-input" value="1" readonly>
                 </div>
+
+                 <div class="payment-options">
+                        <h3 class="payment-title">Payment Method</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method">COD</div>
+                        </div>
+                    </div>
                 
                 <div class="divider"></div>
                 
@@ -212,12 +253,11 @@
                         <i class="far fa-heart"></i> Wishlist
                     </button>
                     <button class="action-btn">
-                        <i class="far fa-trash-alt"></i> <a href="<?= BASEURL; ?>/Cart/delete/<?= $item['id'] ?>">Hapus</a>
+                        <i class="far fa-trash-alt"></i> <a href="<?= BASEURL; ?>/Cart/delete/<?= $item['id'] ?>">Delete</a>
                     </button>
                 </div>
-                <form action="/Cart/payment" method="post">
-                    <a href="<?= BASEURL; ?>/Cart/payment/<?= $item['id'] ?>"><button class="checkout-btn">Payment</button></a>
-                </form>
+                    <!-- <a href=""><button class="checkout-btn">Check-out</button></a> -->
+                    <a href="<?= BASEURL; ?>/Cart/payment/<?= $item['id'] ?>"><button class="checkout-btn">Check-out</button></a>
             </div>
             <?php endforeach; ?>
         </div>
@@ -239,6 +279,23 @@
                 input.value = value;
             });
         });
+    </script>
+      <script>
+      // JavaScript untuk fungsionalitas tombol kuantitas (tetap dipertahankan)
+      document.querySelectorAll('.quantity-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const input = this.parentNode.querySelector('.quantity-input');
+          let value = parseInt(input.value);
+
+          if (this.getAttribute('data-action') === 'increase') {
+            value++;
+          } else if (this.getAttribute('data-action') === 'decrease' && value > 1) {
+            value--;
+          }
+
+          input.value = value;
+        });
+      });
     </script>
 </body>
 </html>

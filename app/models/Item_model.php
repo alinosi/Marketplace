@@ -36,11 +36,11 @@
 
         }
 
-        public function getItemByeId($id){
+        public function getItemById($id){
             $this->db->query('SELECT * FROM products WHERE product_id = :id');
             $this->db->bind('id', $id);
             return $this->db->single();
-           }
+    }
 
         public function getBestItems($id){
             $this->db->query('SELECT * FROM products where user_id != :id limit 3');

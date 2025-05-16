@@ -39,10 +39,10 @@
             }
             $orderModel = $this->model('Item_model');
             if ($orderModel->selectItemById($productId,$productPrice)) {
-                Flasher::setflash('Pemesanan', 'berhasil, silahkanm lakukan pembayaran', 'success');
+                Flasher::setflash('', 'Berhasil menyimpan', 'success');
             }
             else {
-                Flasher::setflash('Pemesanan', 'gagal dilakukan', 'danger');
+                Flasher::setflash('Pemesanan', 'gagal menyimpan', 'danger');
                 header('Location: ' . BASEURL . '/Market'); // Redirect back to profile
                 exit;
             }

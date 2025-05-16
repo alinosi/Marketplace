@@ -95,7 +95,7 @@
       border-radius: 20px 20px 0 0;
     }
   </style>
-</head>
+  <br><br>
 <body>
   <div class="profile-container">
     <div class="decoration"></div>

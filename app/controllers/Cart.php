@@ -63,9 +63,17 @@
         public function transaction($orderId) {
             if (isset($_POST['submit'])) {
                 $paymentMethod = 'COD';
-                $transaction = $this->model('Trasnsactions_model');
-                $transaction->pushItem($orderId, $paymentMethod);
+                $transaction = $this->model('Transactions_model');
+
+                if($transaction->pushItem($orderId, $paymentMethod)) {
+                    Flasher::setflash('Transaksi Berhasil.', ' Anda akan dihubungi oleh pemilik barang', 'success');
+                } else {
+                    Flasher::setflash('Transaksi Gagal', '', 'danger');
+                }
             }
+            
+            header('Location: ' . BASEURL . '/cart'); // Redirect to product list
+            exit;
         }
     }  
 

@@ -258,7 +258,7 @@
                     </button>
                 </div>
                     <!-- <a href=""><button class="checkout-btn">Check-out</button></a> -->
-                    <form action="<?= BASEURL; ?>/Cart/transactions/<?= $item['id'] ?>" method="post">
+                    <form action="<?= BASEURL; ?>/Cart/transaction/<?= $item['id'] ?>" method="post">
                         <button class="checkout-btn" name="submit">Check-out</button>
                     </form>
             </div>

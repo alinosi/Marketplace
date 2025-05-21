@@ -1,8 +1,8 @@
 <h1>Pedoman</h1>
 
 <h3>Sesuaikan define url pada file config.</h3>
-<p>Lokasi file config->app/config/config.php</p>
-<p>Ubah baseurl(line 1) sesuai dengan tempat anda menyimpan folder web</p>
+<li>>Lokasi file config->app/config/config.php</li>>
+<li>>Ubah baseurl(line 1) sesuai dengan tempat anda menyimpan folder web</li>>
 
 contoh menyimpan folder web di folder tugas di dalam localhost maka baseurlnya menjadi :
 

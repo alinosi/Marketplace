@@ -9,7 +9,7 @@ contoh menyimpan folder web di folder tugas di dalam localhost maka baseurlnya m
 
     define('BASEURL', 'http://localhost/tugas/public');
 
-biarkan public menjadi path terakhir
+<h3>biarkan public menjadi path terakhir</h3>
 
 <ul>pasang composer 
 <li>lalu install dependecies dengan menulis</li> 

@@ -7,10 +7,9 @@ Ubah baseurl(line 1) sesuai dengan tempat anda menyimpan folder web
 contoh menyimpan folder web di folder tugas di dalam localhost maka baseurlnya menjadi :
 
     define('BASEURL', 'http://localhost/tugas/public');
+biarkan public menjadi path terakhir
 
-<h3>biarkan public menjadi path terakhir</h3>
-
-<ul>pasang composer 
+<h3>pasang composer</h3>
 <li>lalu install dependecies dengan menulis</li> 
 <li>composer require ramsey/uuid</li>
 </ul>

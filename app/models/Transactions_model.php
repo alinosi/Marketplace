@@ -15,15 +15,17 @@
 
         public function pushItem($orderId, $method, $productId) {
             $transactionId = Uuid::uuid4()->toString();
+            $status = "On Progress";
         
             // Insert transaksi
             $this->db->query(
-                "INSERT INTO {$this->table} (transactions_id, orders_id, payment_method)
-                 VALUES (:transaction_id, :order_id, :payment_method)"
+                "INSERT INTO {$this->table} (transactions_id, orders_id, payment_method, status)
+                 VALUES (:transaction_id, :order_id, :payment_method, :status)"
             );
             $this->db->bind(':transaction_id', $transactionId);
             $this->db->bind(':order_id', $orderId);
             $this->db->bind(':payment_method', $method);
+            $this->db->bind(':status', $status);
           
             $inserted = $this->db->execute();
           

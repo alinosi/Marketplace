@@ -15,7 +15,7 @@ class Product_model {
         "
         SELECT 
             p.product_id,
-            p.user_id,
+            p.seller_id,
             c.categories AS category_name,
             p.status,
             p.product_name,
@@ -29,19 +29,19 @@ class Product_model {
         ON 
             p.categories_id = c.categories_id
         WHERE 
-            p.user_id = :user_id";
+            p.seller_id = :seller_id";
         $this->db->query($query);
-        $this->db->bind(':user_id', $userId);
+        $this->db->bind(':seller_id', $userId);
         return $this->db->resultSet();
     }
 
     public function addProduct($productId, $userId, $categoryId, $status, $productName, $imagePath, $productPrice, $productDescription) {
-        $query = "INSERT INTO products VALUES (:product_id, :user_id, :category_id, :status, :name, :image, :price, :description)";
+        $query = "INSERT INTO products VALUES (:product_id, :seller_id, :category_id, :status, :name, :image, :price, :description)";
     
         $this->db->query($query);
 
         $this->db->bind(':product_id', $productId);
-        $this->db->bind(':user_id', $userId);
+        $this->db->bind(':seller_id', $userId);
         $this->db->bind(':category_id', $categoryId);
         $this->db->bind(':status', $status);
         $this->db->bind(':name', $productName);

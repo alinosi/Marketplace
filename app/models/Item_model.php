@@ -28,8 +28,8 @@
             JOIN 
                 categories c ON p.categories_id = c.categories_id
             JOIN 
-                users u ON p.user_id = u.user_id
-            WHERE p.user_id != :user_id AND status != 'Ordered'"
+                users u ON p.seller_id = u.user_id
+            WHERE p.seller_id != :user_id AND status != 'Ordered'"
             );
             $this->db->bind('user_id', $userId);
             return $this->db->resultSet();
@@ -43,7 +43,7 @@
     }
 
         public function getBestItems($id){
-            $this->db->query("SELECT * FROM products where user_id != :id limit 3");
+            $this->db->query("SELECT * FROM products where seller_id != :id limit 3");
             $this->db->bind('id', $id);
             return $this->db->resultSet();
         }
@@ -53,12 +53,12 @@
             $orderId = $this->generateOrderId();
         
             $this->db->query(
-                "INSERT INTO orders (orders_id, user_id, product_id, product_price)
-                VALUES (:order_id, :user_id, :id, :product_price)"
+                "INSERT INTO orders (orders_id, buyer_id, product_id, product_price)
+                VALUES (:order_id, :buyer_id, :id, :product_price)"
             );
         
             $this->db->bind('order_id', $orderId);
-            $this->db->bind('user_id', $userId);
+            $this->db->bind('buyer_id', $userId);
             $this->db->bind('id', $id);
             $this->db->bind('product_price', $price);
         

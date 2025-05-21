@@ -12,48 +12,30 @@
             $this->view('account/register', $data);
             $this->view('templates/footer');
         }
-    
-        public function store() {
+
+        public function detail($productId) {
+            $sellerId = $_SESSION['user_id'];
+
+            $data['judul'] = 'DETAIL ORDER';
+            $data['transaction'] = $this->model('Orders_model')->getTransaction($productId, $sellerId);
+            $this->view('templates/header', $data);
+            $this->view('sell/transaction', $data);
+            $this->view('templates/footer');
+        }
+
+        public function delivered($transactionId, $productId) {
             if (isset($_POST['submit'])) {
-                // Get the posted data
-                $name = $_POST['name'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-                $confirmPassword = $_POST['confirm_password'];
-                $address = $_POST['address'];
-                $phone = $_POST['phone'];
-    
-                // Validate password match
-                if ($password !== $confirmPassword) {
-                    Flasher::setFlash('Registration failed', 'Passwords do not match', 'danger');
-                    header('Location: ' . BASEURL . '/register'); // Redirect back to register
-                    exit;
-                }
-    
-                // Load the UserModel
-                $userModel = $this->model('User_model');
-    
-                // Check if the email already exists
-                if ($userModel->getUserByEmail($email)) {
-                    Flasher::setFlash('Registration failed', 'Email already exists', 'danger');
-                    header('Location: ' . BASEURL . '/register');
-                    exit;
-                }
-    
-                // Hash the password
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    
-                // Register the user
-                if ($userModel->registerUser ($name, $email, $hashedPassword, $address, $phone)) {
-                    Flasher::setFlash('Registration successful', 'You can now log in', 'success');
-                    header('Location: ' . BASEURL . '/login');
-                    exit;
+                $orderStatus = $this->model('Orders_model');
+                
+                if($orderStatus->transactionStatus($transactionId, $productId)) {
+                    Flasher::setflash('Transaksi Berhasil.', ' Anda akan dihubungi oleh pemilik barang', 'success');
                 } else {
-                    Flasher::setFlash('Registration failed', 'Something went wrong', 'danger');
-                    header('Location: ' . BASEURL . '/register');
-                    exit;
+                    Flasher::setflash('Transaksi Gagal', '', 'danger');
                 }
             }
+            
+            header("Location: " . BASEURL . "/Order/detail/$productId"); // Redirect to product list
+            exit;
         }
     }
 ?>

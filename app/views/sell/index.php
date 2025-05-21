@@ -169,6 +169,24 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
+        .btn-detail {
+            background-color: #111;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 8px 15px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-detail:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
         .actions-container {
             margin-top: auto;
             text-align: right;
@@ -369,9 +387,16 @@
                                 <span class="category-badge"><?= $product['category_name'] ?></span>
                             </div>
                             <div class="actions-container" style="width: 30%; display: flex; justify-content: flex-end;">
+                            
+                            <?php if ($product['status'] == 'Ordered') : ?>
+                                <a href="<?= BASEURL; ?>/Order/detail/<?= $product['product_id'] ?>" class="btn-detail">
+                                    <i class="fas fa-trash-alt"></i> Detail
+                                </a>
+                            <?php else : ?>
                                 <a href="<?= BASEURL; ?>/Sell/delete/<?= $product['product_id'] ?>" class="btn-delete">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </a>
+                            <?php endif; ?>
                             </div>
                         </div>
                         <p class="product-description"><?= $product['description'] ?></p>
@@ -430,14 +455,7 @@
             </div>
         </div>
     </div>
-
-    <!-- Make sure Font Awesome is included in your template -->
-    <script>
-        // If your image uploads aren't working, you might need to check:
-        // 1. File upload permissions on server
-        // 2. Max file size settings
-        // 3. Correct enctype on form (multipart/form-data)
-        
+    <script>   
         // Optional: Preview image before upload
         document.getElementById('productImage').addEventListener('change', function(event) {
             const file = event.target.files[0];

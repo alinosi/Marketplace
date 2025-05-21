@@ -169,6 +169,20 @@
             opacity: 0.7; 
         }
 
+        .arrived-btn {
+            background-color: green; 
+            color: #ccc;
+            border: none;
+            border-radius: 12px;
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 10px;
+            cursor: not-allowed;
+            opacity: 0.7; 
+        }
+
         /* Badge style for item count */
         .cart-badge {
             background-color: #ff4500;
@@ -275,7 +289,9 @@
                 </div>
                     <!-- <a href=""><button class="checkout-btn">Check-out</button></a> -->
                     <form action="<?= BASEURL; ?>/Cart/transaction/<?= $item['id'] ?>/<?= $item['product_id'] ?>" method="post">
-                        <?php if ($item['status'] == 'Ordered') : ?>
+                        <?php if ($item['status'] == 'Delivered') : ?>
+                            <button class="arrived-btn" disabled>Has Arrived</button>
+                        <?php elseif ($item['status'] == 'Ordered') : ?>
                             <button class="ordered-btn" disabled>Ordered</button>
                         <?php else : ?>
                             <button class="checkout-btn" name="submit">Check-out</button>

@@ -13,18 +13,30 @@
             $this->db = new DATABASE;
         }
 
-        public function pushItem($orderId, $method) {
+        public function pushItem($orderId, $method, $productId) {
             $transactionId = Uuid::uuid4()->toString();
-
+        
+            // Insert transaksi
             $this->db->query(
-                "INSERT INTO " . $this->table . " (transactions_id, orders_id, payment_method)
-                VALUES (:transaction_id, :order_id, :payment_method)"
-              );
-
+                "INSERT INTO {$this->table} (transactions_id, orders_id, payment_method)
+                 VALUES (:transaction_id, :order_id, :payment_method)"
+            );
             $this->db->bind(':transaction_id', $transactionId);
             $this->db->bind(':order_id', $orderId);
             $this->db->bind(':payment_method', $method);
-            
-            return $this->db->execute(); // Execute the query
+          
+            $inserted = $this->db->execute();
+          
+            // Jika berhasil, lanjut update status orders
+            if ($inserted) {
+                $this->db->query(
+                    "UPDATE products SET status = 'Ordered' WHERE product_id = :product_id"
+                );
+                $this->db->bind(':product_id', $productId);
+                return $this->db->execute(); 
+            }
+          
+            return false;
         }
+
     }

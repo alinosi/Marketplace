@@ -155,6 +155,20 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
+        .ordered-btn {
+            background-color: #666; 
+            color: #ccc;
+            border: none;
+            border-radius: 12px;
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 10px;
+            cursor: not-allowed;
+            opacity: 0.7; 
+        }
+
         /* Badge style for item count */
         .cart-badge {
             background-color: #ff4500;
@@ -254,51 +268,22 @@
                         <i class="far fa-heart"></i> Wishlist
                     </button>
                     <button class="action-btn">
-                        <i class="far fa-trash-alt"></i> <a href="<?= BASEURL; ?>/Cart/delete/<?= $item['id'] ?>">Delete</a>
+                        <?php if ($item['status'] == 'Available') : ?>
+                            <i class="far fa-trash-alt"></i> <a href="<?= BASEURL; ?>/Cart/delete/<?= $item['id'] ?>">Delete</a>
+                        <?php endif; ?>
                     </button>
                 </div>
                     <!-- <a href=""><button class="checkout-btn">Check-out</button></a> -->
-                    <form action="<?= BASEURL; ?>/Cart/transaction/<?= $item['id'] ?>" method="post">
-                        <button class="checkout-btn" name="submit">Check-out</button>
+                    <form action="<?= BASEURL; ?>/Cart/transaction/<?= $item['id'] ?>/<?= $item['product_id'] ?>" method="post">
+                        <?php if ($item['status'] == 'Ordered') : ?>
+                            <button class="ordered-btn" disabled>Ordered</button>
+                        <?php else : ?>
+                            <button class="checkout-btn" name="submit">Check-out</button>
+                        <?php endif; ?>
                     </form>
             </div>
             <?php endforeach; ?>
         </div>
     </div>
-
-    <script>
-        // JavaScript untuk fungsionalitas tombol kuantitas
-        document.querySelectorAll('.quantity-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const input = this.parentNode.querySelector('.quantity-input');
-                let value = parseInt(input.value);
-                
-                if (this.getAttribute('data-action') === 'increase') {
-                    value++;
-                } else if (this.getAttribute('data-action') === 'decrease' && value > 1) {
-                    value--;
-                }
-                
-                input.value = value;
-            });
-        });
-    </script>
-      <script>
-      // JavaScript untuk fungsionalitas tombol kuantitas (tetap dipertahankan)
-      document.querySelectorAll('.quantity-btn').forEach(button => {
-        button.addEventListener('click', function() {
-          const input = this.parentNode.querySelector('.quantity-input');
-          let value = parseInt(input.value);
-
-          if (this.getAttribute('data-action') === 'increase') {
-            value++;
-          } else if (this.getAttribute('data-action') === 'decrease' && value > 1) {
-            value--;
-          }
-
-          input.value = value;
-        });
-      });
-    </script>
 </body>
 </html>

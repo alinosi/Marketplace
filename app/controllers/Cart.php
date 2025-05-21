@@ -60,12 +60,12 @@
         //         $this->view('templates/footer');
         //     }
 
-        public function transaction($orderId) {
+        public function transaction($orderId, $productId) {
             if (isset($_POST['submit'])) {
                 $paymentMethod = 'COD';
                 $transaction = $this->model('Transactions_model');
 
-                if($transaction->pushItem($orderId, $paymentMethod)) {
+                if($transaction->pushItem($orderId, $paymentMethod, $productId)) {
                     Flasher::setflash('Transaksi Berhasil.', ' Anda akan dihubungi oleh pemilik barang', 'success');
                 } else {
                     Flasher::setflash('Transaksi Gagal', '', 'danger');

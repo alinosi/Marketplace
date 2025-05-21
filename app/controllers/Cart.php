@@ -36,14 +36,36 @@
             header('Location: ' . BASEURL . '/cart'); // Redirect to product list
             exit;
             
-        }
+        }    
 
-        public function payment($itemId) {
-            $data['judul'] = 'Home';
-            $data['items'] = $this->model('Item_model')->getItemById($itemId);
-            $this->view('templates/header', $data);
-            $this->view('cart/index', $data);
-            $this->view('templates/footer');
+        // public function transactions($itemId) {
+        //     if (isset($_POST['submit'])) {
+        //         $data['judul'] = 'Home';
+        //         $data['items'] = $this->model('Orders_model')->getItem($itemId);
+                
+        //         $order = $data['items']['name'];
+        //         $price = $data['items']['price'];
+        //         $quantity = $data['items']['quantity'];
+                
+                
+        //         function generateRandomString($length = 5) {
+        //         return substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length / 62))), 1, $length);
+        //         }
+            
+        //         $transactionId = generateRandomString();
+                
+            
+        //         $this->view('templates/header', $data);
+        //         $this->view('cart/index', $data);   
+        //         $this->view('templates/footer');
+        //     }
+
+        public function transaction($orderId) {
+            if (isset($_POST['submit'])) {
+                $paymentMethod = 'COD';
+                $transaction = $this->model('Trasnsactions_model');
+                $transaction->pushItem($orderId, $paymentMethod);
+            }
         }
     }  
 

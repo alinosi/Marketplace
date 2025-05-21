@@ -1,4 +1,5 @@
 <?php use app\core\Flasher as Flasher;?>
+
 <style>
         * {
             margin: 0;
@@ -240,11 +241,11 @@
                 </div>
 
                  <div class="payment-options">
-                        <h3 class="payment-title">Payment Method</h3>
-                        <div class="payment-methods">
-                            <div class="payment-method">COD</div>
-                        </div>
+                    <h3 class="payment-title">Payment Method</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method">COD</div>
                     </div>
+                </div>
                 
                 <div class="divider"></div>
                 
@@ -257,7 +258,9 @@
                     </button>
                 </div>
                     <!-- <a href=""><button class="checkout-btn">Check-out</button></a> -->
-                    <a href="<?= BASEURL; ?>/Cart/payment/<?= $item['id'] ?>"><button class="checkout-btn">Check-out</button></a>
+                    <form action="<?= BASEURL; ?>/Cart/transactions/<?= $item['id'] ?>" method="post">
+                        <button class="checkout-btn" name="submit">Check-out</button>
+                    </form>
             </div>
             <?php endforeach; ?>
         </div>

@@ -1,7 +1,7 @@
 <?php 
     namespace app\models;
     use App\core\Database as Database;
-use PDOException;
+    use PDOException;
 
     class User_model {
         private $table ='users';

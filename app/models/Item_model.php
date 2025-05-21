@@ -1,7 +1,7 @@
 <?php 
     namespace app\models;
     use App\core\Database as Database;
-    
+
     class Item_model {
         private $db;
 
@@ -50,11 +50,11 @@
 
         public function selectItemById($id,$price){
             $userId = $_SESSION['user_id'];
-            $orderId = random_int(1, 10000);
+            $orderId = $this->generateOrderId();
         
             $this->db->query(
-                "INSERT INTO orders (orders_id, user_id, product_id, order_date, product_price)
-                VALUES (:order_id, :user_id, :id, '2024-01-20', :product_price)"
+                "INSERT INTO orders (orders_id, user_id, product_id, product_price)
+                VALUES (:order_id, :user_id, :id, :product_price)"
             );
         
             $this->db->bind('order_id', $orderId);
@@ -63,6 +63,10 @@
             $this->db->bind('product_price', $price);
         
             return $this->db->execute();
+        }
+
+        private function generateOrderId() {
+            return 'ORD' . date('YmdHis') . rand(10, 99);
         }
 
     //     public function getMahasiswaByID($id){

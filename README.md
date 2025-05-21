@@ -1,5 +1,6 @@
-<h1>Sesuaikan define url pada file config.</h1>
+<h1>Pedoman</h1>
 
+<h2>Sesuaikan define url pada file config.</h2>
 <h3>Lokasi file config->app/config/config.php</h3>
 
 Ubah baseurl(line 1) sesuai dengan tempat anda menyimpan folder web

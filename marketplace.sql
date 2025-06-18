@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 15, 2025 at 11:15 PM
+-- Generation Time: May 21, 2025 at 12:30 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.9
 
@@ -67,20 +67,19 @@ INSERT INTO `categories` (`categories_id`, `categories`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `orders_id` varchar(5) NOT NULL,
-  `user_id` int DEFAULT NULL,
-  `product_id` varchar(5) DEFAULT NULL,
-  `order_date` date DEFAULT NULL,
+  `orders_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `buyer_id` int DEFAULT NULL,
+  `product_id` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `product_price` int DEFAULT NULL,
-  `descriptions` varchar(250) DEFAULT NULL
+  `order_date` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`orders_id`, `user_id`, `product_id`, `order_date`, `product_price`, `descriptions`) VALUES
-('3870', 18, 'omJa9', '2024-01-20', 50000000, NULL);
+INSERT INTO `orders` (`orders_id`, `buyer_id`, `product_id`, `product_price`, `order_date`) VALUES
+('ORD2025052112120635', 20, 'omJa9', 50000000, '2025-05-21 19:12:06');
 
 -- --------------------------------------------------------
 
@@ -90,7 +89,7 @@ INSERT INTO `orders` (`orders_id`, `user_id`, `product_id`, `order_date`, `produ
 
 CREATE TABLE `products` (
   `product_id` varchar(5) NOT NULL,
-  `user_id` int DEFAULT NULL,
+  `seller_id` int DEFAULT NULL,
   `categories_id` varchar(5) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   `product_name` varchar(255) DEFAULT NULL,
@@ -103,8 +102,9 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `user_id`, `categories_id`, `status`, `product_name`, `image`, `product_price`, `description`) VALUES
-('omJa9', 17, 'C001', 'Available', 'RTX 4090', '6825e6fdb67dd.jpg', 50000000, 'VGA NEW\r\nLIBAS CYBERPUNK 2077 RATA KANAN'),
+INSERT INTO `products` (`product_id`, `seller_id`, `categories_id`, `status`, `product_name`, `image`, `product_price`, `description`) VALUES
+('KRm2h', 18, 'C002', 'Available', 'Premium Account', '682d9ca99f968.png', 1200000, 'Get Super account for lucky people \r\nAdd some special authority\r\n- Discount every week\r\n- Special Notifications\r\n- Etc'),
+('omJa9', 17, 'C001', 'Delivered', 'RTX 4090', '6825e6fdb67dd.jpg', 50000000, 'VGA NEW\r\nLIBAS CYBERPUNK 2077 RATA KANAN'),
 ('wzdX4', 17, 'C003', 'Available', 'Barang 2', '6820955d4fdbe.png', 10222, 'Deskripsi barang 2'),
 ('zhfol', 18, 'C001', 'Available', 'IDX 1945', '682627f8c7923.jpg', 30000000, 'Deskripsi Produk 17');
 
@@ -115,11 +115,19 @@ INSERT INTO `products` (`product_id`, `user_id`, `categories_id`, `status`, `pro
 --
 
 CREATE TABLE `transactions` (
-  `transactions_id` varchar(5) NOT NULL,
-  `orders_id` varchar(5) DEFAULT NULL,
-  `transactions_date` date DEFAULT NULL,
-  `payment_method` varchar(30) DEFAULT NULL
+  `transactions_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `orders_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `payment_method` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `status` varchar(15) NOT NULL,
+  `transactions_date` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`transactions_id`, `orders_id`, `payment_method`, `status`, `transactions_date`) VALUES
+('d2d37807-ace0-4d30-8e11-669d86ce6b78', 'ORD2025052112120635', 'COD', 'Success', '2025-05-21 19:18:34');
 
 -- --------------------------------------------------------
 
@@ -141,10 +149,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `address`, `phone_number`, `email`, `password`) VALUES
-(15, 'tester', '123', '123', 'testing@gmail.com', '$2y$10$d6IfMz9QbQ7U3FnxW.kFoOm8MQwz8GD9jMdBoB0KUqmKisimw2u56'),
 (16, 'noby dualitas', '-', '123', 'mthoriqulfadli@gmail.com', '$2y$10$ZCa3la8es7hUJ0WejyLa6e7n7xjrhHlfe7VgMKRIrg1RpttigmxnO'),
-(17, 'riski ujung lorong', 'Sumateratera', '081271218801', 'tester1@gmail.com', '$2y$10$V2LIW.Cq9yd1GviTqkTzPuOSLplSs0PUV6p.y6t6amDdDFEhBl4Ni'),
-(18, 'dani', 'Opi ', '081271217782', 'tester2@gmail.com', '$2y$10$tohey.wp1C4ym3jbvOopxuXU5CQiqh/nF0PtqbYv8ZY4.W/y/AwPe');
+(17, 'riski ujung lorong', 'JLN rajabali tanjung pinang, Blok besar F/21', '081271218801', 'tester1@gmail.com', '$2y$10$V2LIW.Cq9yd1GviTqkTzPuOSLplSs0PUV6p.y6t6amDdDFEhBl4Ni'),
+(18, 'Dani arisetiawan', 'Opi Jakabaring, JLN Cendrawasih V Blok A/18', '081271217782', 'tester2@gmail.com', '$2y$10$tohey.wp1C4ym3jbvOopxuXU5CQiqh/nF0PtqbYv8ZY4.W/y/AwPe'),
+(19, 'jefri', '-JLN cendrawasih 15 Blok F/21', '081271218801', 'tester3@gmail.com', '$2y$10$PQfjjME2cToCfPWvnnFCDeWz5HkUp6wmDFZu0Y47cLzcXg6PCVJti'),
+(20, 'jefri', 'JLN Kutilang IV Blok F/33', '081271218801', 'tester4@gmail.com', '$2y$10$WrBHUovM1GffpC4SWqCXfu4HE0CF/nRuMrnAek2yLEGW89OlC9xj2');
 
 --
 -- Indexes for dumped tables
@@ -167,8 +176,8 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`orders_id`),
-  ADD KEY `orders_ibfk_1` (`user_id`),
-  ADD KEY `orders_ibfk_2` (`product_id`);
+  ADD KEY `orders_ibfk_2` (`product_id`),
+  ADD KEY `orders_ibfk_1` (`buyer_id`) USING BTREE;
 
 --
 -- Indexes for table `products`
@@ -176,7 +185,7 @@ ALTER TABLE `orders`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`),
   ADD KEY `categories_id` (`categories_id`),
-  ADD KEY `products_ibfk_1` (`user_id`);
+  ADD KEY `products_ibfk_1` (`seller_id`) USING BTREE;
 
 --
 -- Indexes for table `transactions`
@@ -205,7 +214,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
@@ -215,21 +224,21 @@ ALTER TABLE `users`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`buyer_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`categories_id`) REFERENCES `categories` (`categories_id`);
 
 --
 -- Constraints for table `transactions`
 --
 ALTER TABLE `transactions`
-  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`orders_id`) REFERENCES `orders` (`orders_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`orders_id`) REFERENCES `orders` (`orders_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
